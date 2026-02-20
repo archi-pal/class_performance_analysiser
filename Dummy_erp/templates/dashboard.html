@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .card { border: none; padding: 20px; width: 220px; border-radius: 12px; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin: 15px; display: inline-block; vertical-align: top; }
+        .btn { display: inline-block; margin-top: 10px; padding: 8px 12px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-size: 14px; }
+        .logout { float: right; color: red; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body style="font-family: sans-serif; background: #f8f9fa; padding: 40px;">
+    <a href="/logout" class="logout">Logout</a>
+    <h1>Welcome, {{ session['username'] }}</h1>
+    <p>Role: <strong>{{ session['role'] }}</strong></p>
+    <hr>
+    <h3>Assigned Subjects:</h3>
+    {% for sub in subjects %}
+    <div class="card">
+        <h4 style="margin:0; color:#007bff;">{{ sub }}</h4>
+        <p style="color:#666;">Semester 4<br>M.G.M College</p>
+        <a href="/input/{{ sub }}" class="btn">Add Performance Data</a>
+    </div>
+    {% endfor %}
+</body>
+</html>
