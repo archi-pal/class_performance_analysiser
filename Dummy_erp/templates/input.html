@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: sans-serif; padding: 40px; background: #f8f9fa;">
+    <div style="max-width: 400px; margin: auto; background: white; padding: 30px; border-radius: 10px;">
+        <h2>Record Data: {{ subject }}</h2>
+        <form action="/submit" method="post">
+            <input type="hidden" name="subject" value="{{ subject }}">
+            <label>Student Name</label>
+            <input type="text" name="student_name" required style="width:100%; padding:8px; margin: 10px 0;">
+            <label>Attendance (%)</label>
+            <input type="number" name="attendance" required style="width:100%; padding:8px; margin: 10px 0;">
+            <label>UT Marks</label>
+            <input type="number" name="ut_marks" required style="width:100%; padding:8px; margin: 10px 0;">
+            <label>Semester Marks</label>
+            <input type="number" name="sem_marks" required style="width:100%; padding:8px; margin: 10px 0;">
+            <button type="submit" style="background:#007bff; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">Save Data</button>
+        </form>
+        <br>
+        <a href="/dashboard">Cancel and Go Back</a>
+    </div>
+</body>
+</html>

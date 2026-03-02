@@ -1,0 +1,23 @@
+<body style="font-family: Arial; padding: 20px;">
+    <h2>All Saved Performance Data</h2>
+    <table border="1" style="width:100%; border-collapse: collapse;">
+        <tr style="background-color: #eee;">
+            <th>Student Name</th>
+            <th>Subject</th>
+            <th>Attendance</th>
+            <th>UT Marks</th>
+            <th>Sem Marks</th>
+        </tr>
+        {% for item in records %}
+        <tr>
+            <td>{{ item.student_name }}</td>
+            <td>{{ item.subject }}</td>
+            <td>{{ item.attendance }}</td>
+            <td>{{ item.ut_marks }}</td>
+            <td>{{ item.sem_marks }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/dashboard">Back to Dashboard</a>
+</body>
