@@ -1,5 +1,4 @@
-import os
-from flask import Flask, render_template
+from flask import Flask
 from models import db, User, Class, Subject, Student, Performance
 from flask import request, jsonify
 import uuid
@@ -32,6 +31,19 @@ def home():
     user_list = "<br>".join([f"{u.name} - Role: {u.role} (Username: {u.username})" for u in users])
     
     return f"<h1>Database Content:</h1><p>{user_list}</p>"
+
+@app.route('/dashboard')
+def dashboard():
+    # Performance.query.all() pulls all synced data
+    records = Performance.query.all()
+    return render_template('dashboard.html', records=records)
+
+@app.route('/analytics')
+def analytics():
+    # Force the database to check for new data
+    db.session.expire_all() 
+    records = Performance.query.all()
+    return render_template('analytics.html', records=records)
 
 @app.route('/api/sync', methods=['POST'])
 def receive_sync():

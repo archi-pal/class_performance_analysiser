@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main App - Analytics</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>📊 Student Analytics Data</h2>
+            <a href="/dashboard" class="btn btn-secondary btn-sm">Back to Dashboard</a>
+        </div>
+        
+        <div class="card shadow">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Student</th>
+                            <th>Subject</th>
+                            <th>Attendance</th>
+                            <th>UT Marks</th>
+                            <th>Sem Marks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+    {% for record in records %}
+    <tr>
+        <td>{{ record.student.name if record.student else "N/A" }}</td>
+        
+        <td>{{ record.subject.name if record.subject else "N/A" }}</td>
+        
+        <td>{{ record.attendance }}%</td>
+        
+        <td>{{ record.ut1_marks }}</td>
+        <td>{{ record.sem_marks }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+                </table>
+                {% if not records %}
+                <p class="text-center text-muted">No data synced yet. Submit data from Dummy ERP.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
